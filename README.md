@@ -1,1 +1,1 @@
-# java-lab
+Java Project 2
