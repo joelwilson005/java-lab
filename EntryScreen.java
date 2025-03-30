@@ -3,6 +3,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 
 public class EntryScreen {
@@ -149,11 +150,10 @@ public class EntryScreen {
 
 
     public int findBus(ArrayList<Bus> buses, int bid) {
-        return buses.stream()
-                .filter(bus -> bus.getId() == bid)
-                .findFirst()
-                .orElseThrow()
-                .getId();
+        return IntStream.range(0, buses.size()) // Generate indices 0 to size-1
+                .filter(i -> buses.get(i).getId() == bid) // Check ID at index i
+                .findFirst() // Get first matching index
+                .orElse(-1); // Return -1 if no match
     }
 
 
